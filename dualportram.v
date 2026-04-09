@@ -37,17 +37,17 @@ input [2:0] addrs_b,
 input wra,rda,wrb,rdb,
 output reg [7:0] out_a,
 output reg [7:0] out_b);
-reg [7:0] ram1[7:0];
-reg [7:0] ram2[7:0];
+reg [7:0] ram[7:0];
+//reg [7:0] ram2[7:0];
 always @(posedge clk)
 begin
 if(rda) 
-ram1[addrs_a]<= a;
+ram[addrs_a]<= a;
 if(wra)
-out_a=ram1[addrs_a];
+out_a=ram[addrs_a];
 if(rdb)
-ram2[addrs_b]<=b;
+ram[addrs_b]<=b;
 if(wrb)
-out_b<=ram2[addrs_b];
+out_b<=ram[addrs_b];
 end
 endmodule
